@@ -1,0 +1,128 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-image: url('./img/bc.png');
+  position: relative;
+}
+.container {
+  margin: 0 auto;
+  padding: 0;
+  width: 400px;
+}
+header {
+  background-color: #4a8cdb;
+  background-color: #5c9eed;
+  height: 150px;
+  border-radius: 10px 10px 0 0;
+  position: relative;
+  text-align: center;
+}
+header #date {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+p {
+  dfgdfg
+}
+main {
+  background-color: #fff;
+  position: relative;
+  width: 400px;
+  height: 400px;
+  max-height: 400px;
+  overflow: auto;
+  color: rgba(0, 0, 0, 0.5);
+}
+main::-webkit-scrollbar {
+  display: none;
+}
+.list {
+  width: 400px;
+  height: 45px;
+  min-height: 45px;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.list:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.check {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 25px;
+  border: 1px solid #4a8cdb;
+  border-radius: 100px;
+}
+.trash:hover {
+  filter: invert(60%) sepia(51%) saturate(2878%) hue-rotate(346deg)
+    brightness(104%) contrast(97%);
+}
+.text {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 10px;
+  position: relative;
+  font-size: 18px;
+  left: 50px;
+  top: 9px;
+  max-width: 105px;
+  box-sizing: border-box;
+  max-lines: 10;
+}
+.lineThrough {
+  text-decoration: line-through;
+  color: #ccc;
+}
+.trash {
+  position: absolute;
+  width: 25px;
+  right: 15px;
+  top: 10px;
+}
+.addItem {
+  position: relative;
+  width: 350px;
+  margin: 10px auto;
+  height: 30px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+}
+.addItem img {
+  vertical-align: middle;
+  height: 100%;
+}
+.addItem input {
+  position: absolute;
+  left: 40px;
+  height: 30px;
+  width: 310px;
+  background-color: transparent;
+  border: none;
+  box-sizing: border-box;
+  padding-left: 10px;
+  font-size: 18px;
+}
+.addItem input:focus {
+  outline-width: 0;
+}
+footer {
+  font-style: italic;
+  background-color: #fff;
+  padding: 8px;
+  color: rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+footer a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.5);
+}
