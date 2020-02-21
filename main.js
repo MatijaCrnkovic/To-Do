@@ -1,24 +1,29 @@
 const date = document.getElementById('date');
-const list = document.getElementById('item');
+const list = document.getElementById('list');
 const input = document.getElementById('input');
 
-const CHECK = './img/done_icon.svg';
-const UNCHECK = './img/uncheck_icon.png';
+const CHECK = 'checked';
+const UNCHECK = 'check';
 const LINE_THROUGHT = 'lineThrough';
 
-const LIST = [];
-const id = 0;
+let LIST = [];
+let ID = 0;
 
 const todayDate = new Date();
 const optionsDate = { weekday: 'long', month: 'long', day: 'numeric' };
 date.innerHTML = todayDate.toLocaleDateString('en-US', optionsDate);
 
-const addToDo = (name, id, check, remove) => {
+const addToDo = (name, id, check, trash) => {
+  if (trash) {
+    return;
+  }
   const done = check ? CHECK : UNCHECK;
   const line = check ? LINE_THROUGHT : '';
-  const p = `<li class="list"><img class='${done} check' src="${done}">
-  <p class="text ${line}">${name}</p>
-  <img class='trash' src="img/remove_icon.svg"</li>`;
+  const p = `<li class="item">
+              <img class='check ${done}' job='complete' id="${ID}" src="img/done_icon.svg">
+              <p class="text ${line}" job='complete' id="${ID}">${name}</p>
+              <img class='trash' job='remove' src="img/remove_icon.svg" id="${ID}">
+            </li>`;
   const position = 'beforeend';
   list.insertAdjacentHTML(position, p);
 };
@@ -28,13 +33,36 @@ document.addEventListener('keyup', event => {
     const text = input.value;
     if (text) {
       addToDo(text);
+      LIST.push({
+        name: text,
+        id: ID,
+        done: false,
+        trash: false
+      });
+      input.value = '';
+      ID++;
     }
-    input.value = '';
   }
 });
 
-addToDo('sdfs', 1, true, false);
+const completeTask = element => {
+  element.parentNode.querySelector('.check').classList.toggle(CHECK);
+  element.parentNode.querySelector('.text').classList.toggle(LINE_THROUGHT);
+  LIST[element.id].done = LIST[element.id].done ? false : true;
+};
 
-const completeTask = () => {};
+const deleteTask = element => {
+  element.parentNode.parentNode.removeChild(element.parentNode);
+  LIST[element.id].trash = true;
+};
 
-const deleteTask = () => {};
+list.addEventListener('click', event => {
+  const element = event.target;
+  const elementJob = element.attributes.job.value;
+
+  if (elementJob == 'complete') {
+    completeTask(element);
+  } else if (elementJob == 'remove') {
+    deleteTask(element);
+  }
+});
